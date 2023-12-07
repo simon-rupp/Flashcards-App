@@ -20,7 +20,7 @@ import { DeckOwnershipGuard } from "src/guards/deck-owner.guard";
 import { UpdateCardDto } from "./card-update.dto";
 
 @UseGuards(JwtAuthGuard)
-@Controller("deck/:deckId/cards")
+@Controller("decks/:deckId/cards")
 export class CardsController {
   constructor(private readonly cardsService: CardsService) {}
 
@@ -58,7 +58,6 @@ export class CardsController {
     };
   }
 
-  @UseGuards(DeckOwnershipGuard)
   @Patch(":id")
   async update(
     @Param("id") id: string,
@@ -68,7 +67,6 @@ export class CardsController {
     return card;
   }
 
-  @UseGuards(DeckOwnershipGuard)
   @Get(":id")
   async findOne(@Param("id") id: string): Promise<CardResponseDTO> {
     const card = await this.cardsService.findOne(id);
@@ -78,7 +76,6 @@ export class CardsController {
     return card;
   }
 
-  @UseGuards(DeckOwnershipGuard)
   @Delete(":id")
   async remove(
     @Param("id") id: string,

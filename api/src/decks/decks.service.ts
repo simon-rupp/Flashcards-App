@@ -76,4 +76,15 @@ export class DecksService {
     await this.deckRepository.save(deck);
     return deck;
   }
+
+  async decrementCardCounter(id: string): Promise<Deck | null> {
+    const deck = await this.findOne(id);
+    if (!deck) {
+      return null;
+    }
+
+    deck.numberOfCards -= 1;
+    await this.deckRepository.save(deck);
+    return deck;
+  }
 }

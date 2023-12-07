@@ -25,7 +25,7 @@ export class CardsService {
     return this.cardRepository.save(card);
   }
 
-  // Returns all comments that match the given criteria.
+  // Returns all titles that match the given criteria.
   async findAll(
     limit: number,
     offset: number,
@@ -45,11 +45,9 @@ export class CardsService {
       take: limit,
       skip: offset,
       where: [
-        {
-          deckId,
-          front,
-          back,
-        },
+        { deckId, front, back },
+        { deckId, front },
+        { deckId, back },   
       ],
       order: {
         createdAt: "DESC",
@@ -77,6 +75,9 @@ export class CardsService {
     if (!card) {
       return null;
     }
+
+    await this.decksService.decrementCardCounter(card.deckId);
+    
     return this.cardRepository.remove(card);
   }
 }

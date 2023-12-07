@@ -26,7 +26,7 @@ export class Card {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne(() => Deck, (deck) => deck.cards)
+  @ManyToOne(() => Deck, (deck) => deck.cards, { onDelete: "CASCADE" })
   @JoinColumn({ name: "deckId" })
   deck: Deck;
 
