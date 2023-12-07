@@ -65,4 +65,15 @@ export class DecksService {
 
     return await queryBuilder.getMany();
   }
+
+  async incrementCardCounter(id: string): Promise<Deck | null> {
+    const deck = await this.findOne(id);
+    if (!deck) {
+      return null;
+    }
+
+    deck.numberOfCards += 1;
+    await this.deckRepository.save(deck);
+    return deck;
+  }
 }

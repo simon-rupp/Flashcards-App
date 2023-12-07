@@ -1,10 +1,12 @@
 import { User } from "src/user/user.entity";
+import { Card } from "src/cards/card.entity";
 import {
   Column,
   CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
@@ -35,4 +37,7 @@ export class Deck {
 
   @Column()
   userId: number;
+
+  @OneToMany(() => Card, (card) => card.deck)
+  cards: Card[];
 }
