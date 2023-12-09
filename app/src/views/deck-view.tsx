@@ -1,6 +1,6 @@
 import Aside from "@/components/aside";
 import Cards from "@/components/card/cards";
-import Deck from "@/components/deck/deck";
+import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
 import useQueryDecks from "@/hooks/use-query-decks";
 import { useStore } from "@/lib/store";
@@ -22,6 +22,7 @@ const DeckView = () => {
     <>
       <Sidebar />
       <div className="flex flex-col w-full min-h-screen border-x-2 border-slate-400 md:max-w-xl">
+        <Header />
         {deck && selectedDeckId && <Cards />}
       </div>
       <Aside />

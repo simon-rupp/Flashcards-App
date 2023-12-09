@@ -16,6 +16,7 @@ import { Label } from "@/components/ui/label";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
 import { useStore } from "@/lib/store";
 import useMutationcards from "@/hooks/use-mutations-cards";
+import { Textarea } from "../ui/textarea";
 
 // Allow user to create a new deck with chosen title
 const AddCardDialog = () => {
@@ -59,33 +60,27 @@ const AddCardDialog = () => {
           <DialogDescription>
             {" "}
             {user
-              ? "Give a front and back to your card here."
+              ? "Write on the front and back of your card!"
               : "Please login to create a deck/card"}{" "}
           </DialogDescription>
         </DialogHeader>
         {user && (
           <div className="grid gap-4 py-4">
             <div className="grid items-center grid-cols-4 gap-4">
-              <Label htmlFor="title" className="text-right">
-                Front
-              </Label>
-              <Input
+              <Textarea
                 id="front"
                 value={front}
-                className="col-span-3"
+                className="col-span-4"
                 onChange={(e) => {
                   setFront(e.target.value);
                 }}
               />
             </div>
             <div className="grid items-center grid-cols-4 gap-4">
-              <Label htmlFor="title" className="text-right">
-                Back
-              </Label>
-              <Input
+              <Textarea
                 id="back"
                 value={back}
-                className="col-span-3"
+                className="col-span-4"
                 onChange={(e) => {
                   setBack(e.target.value);
                 }}

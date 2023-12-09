@@ -11,9 +11,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import useMutationcards from "@/hooks/use-mutations-cards";
+import { Textarea } from "@/components/ui/textarea";
 
 // Dialog pop up when user wants to edit a deck - allows user to update the title of the deck
 const EditCardDialog = ({
@@ -60,35 +59,29 @@ const EditCardDialog = ({
       <DialogTrigger asChild></DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit Deck</DialogTitle>
+          <DialogTitle>Edit Card</DialogTitle>
           <DialogDescription>
-            Edit the Front and Back of your card here.
+            Edit your card here.
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-4 py-1">
           <div className="grid items-center grid-cols-4 gap-4">
-            <Label htmlFor="title" className="text-right">
-              Front
-            </Label>
-            <Input
+            <Textarea
               id="front"
               value={front}
-              className="col-span-3"
+              className="col-span-4"
               onChange={(e) => {
                 setFront(e.target.value);
               }}
             />
           </div>
         </div>
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-4 py-1">
           <div className="grid items-center grid-cols-4 gap-4">
-            <Label htmlFor="title" className="text-right">
-              Back
-            </Label>
-            <Input
+            <Textarea
               id="back"
               value={back}
-              className="col-span-3"
+              className="col-span-4"
               onChange={(e) => {
                 setBack(e.target.value);
               }}
