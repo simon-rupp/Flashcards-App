@@ -3,11 +3,18 @@ import { useStore } from "@/lib/store";
 import { useEffect } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { getAuthenticatedUser } from "@/lib/auth";
+import { Deck } from "@/lib/types";
+import { useState } from "react";
+import { fetchDeckById } from "@/lib/api";
 
-function useQueryDeck() {
+
+function useQueryDecks() {
   const { toast } = useToast();
   const decks = useStore((state) => state.decks);
   const setDecks = useStore((state) => state.setDecks);
+  const setSelectedDeckId = useStore((state) => state.setSelectedDeckId);
+  const clearSelectedDeckId = useStore((state) => state.clearSelectedDeckId);
+  const [deck, setDeck] = useState<Deck | null>(null);
 
   const loadDecks = async () => {
     try {
@@ -32,13 +39,38 @@ function useQueryDeck() {
     }
   };
 
+  const loadDeck = async (id: string) => {
+    let deck = null;
+  
+    try {
+      deck = await fetchDeckById(id);
+      setDeck(deck);
+      setSelectedDeckId(id);
+  
+    } catch (error) {
+      setDeck(null);
+      clearSelectedDeckId();
+      toast({
+        variant: "destructive",
+        title: "Failed to fetch deck",
+        description:
+          (error as Error).message ||
+          "There was an error loading the deck. Please try again later.",
+      });
+    }
+  };
+
   useEffect(() => {
     loadDecks();
   }, []);
 
+
+
   return {
     decks,
+    deck,
+    loadDeck,
   };
 }
 
-export default useQueryDeck;
+export default useQueryDecks;

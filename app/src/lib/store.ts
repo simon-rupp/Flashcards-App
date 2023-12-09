@@ -1,10 +1,12 @@
-import { Deck, User } from "./types";
+import { Deck, User, Card } from "./types";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
 type State = {
   decks: Deck[];
   user: User | null;
+  cards: Card[];
+  selectedDeckId: string | null;
 };
 
 type Action = {
@@ -14,12 +16,21 @@ type Action = {
   editDeck: (id: string, deck: Deck) => void;
   setUser: (user: User) => void;
   clearUser: () => void;
+  setCards: (cards: Card[]) => void;
+  removeCard: (id: string) => void;
+  addCard: (card: Card) => void;
+  editCard: (id: string, card: Card) => void;
+  clearCards: () => void;
+  setSelectedDeckId: (id: string) => void;
+  clearSelectedDeckId: () => void;
 };
 
 // define the initial state
 const initialState: State = {
   decks: [],
   user: null,
+  cards: [],
+  selectedDeckId: null,
 };
 
 export const useStore = create<State & Action>()(
@@ -50,5 +61,40 @@ export const useStore = create<State & Action>()(
     setUser: (user) => set({ user }),
 
     clearUser: () => set({ user: null }),
+
+    setCards: (cards) => set({ cards }),
+
+    removeCard: (id) => {
+      const newCards = get().cards.filter((card) => card.id !== id);
+      set({ cards: newCards });
+    },
+
+    addCard: (card) => {
+      set({ cards: [card, ...get().cards],
+      decks: get().decks.map((deck) => {
+        if (deck.id === card.deckId) {
+          return {
+            ...deck,
+            numberOfCards: deck.numberOfCards += 1,
+          };
+        }
+        return deck;
+      }
+      )});
+    },
+
+    editCard: (id, card) => {
+      const index = get().cards.findIndex((card) => card.id === id);
+      const cards = [...get().cards];
+      cards[index].front = card.front;
+      cards[index].back = card.back;
+      set({ cards: cards });
+    },
+
+    clearCards: () => set({ cards: [] }),
+
+    setSelectedDeckId: (id) => set({ selectedDeckId: id }),
+
+    clearSelectedDeckId: () => set({ selectedDeckId: null }),
   })),
 );

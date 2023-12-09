@@ -13,4 +13,11 @@ export type User = {
   avatar?: string;
 };
 
+export type Card = {
+  id: string;
+  front: string;
+  back: string;
+  deckId: string;
+};
+
 export type DeckWithUserData = Deck & { user: User };
