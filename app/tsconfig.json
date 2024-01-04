@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "types": ["vite", "node"],
+    "types": ["vite/client", "node"],
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
