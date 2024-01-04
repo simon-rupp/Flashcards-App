@@ -1,6 +1,6 @@
 import { Logger, ILogObj } from "tslog";
 
-const isProduction = import.meta.env.PROD; // Vite provides `import.meta.env` to access environment variables
+const isProduction = import.meta.env.NODE_ENV; // Vite provides `import.meta.env` to access environment variables
 
 export const log: Logger<ILogObj> = new Logger({
   minLevel: isProduction ? 6 : 0, // Only fatal errors will be logged in production, while in dev all log levels will be shown
