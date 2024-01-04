@@ -25,7 +25,9 @@
       "@/*": ["./src/*"]
     },
 
-    "inlineSourceMap": true
+    "inlineSourceMap": true,
+
+    "typeRoots": ["./src", "./node_modules/@types"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
