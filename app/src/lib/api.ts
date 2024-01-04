@@ -6,7 +6,7 @@ import {
   removeAuthenticatedUserToken,
 } from "./auth";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = process.env.VITE_API_URL;
 
 const handleError = (response: Response, message?: string) => {
   if (response.status === 401) {
