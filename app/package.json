@@ -42,7 +42,6 @@
     "tailwindcss": "^3.3.3",
     "tailwindcss-animate": "^1.0.7",
     "tslog": "^4.9.2",
-    "vite": "^4.4.5",
     "zustand": "^4.4.4"
   },
   "devDependencies": {
