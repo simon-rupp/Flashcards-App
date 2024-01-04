@@ -2,7 +2,6 @@ import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { ConfigModule, ConfigService } from "@nestjs/config";
-import { validate } from "./env.validation";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AuthService } from "./auth/auth.service";
 import { PassportModule } from "@nestjs/passport";
@@ -19,7 +18,6 @@ import { CardsModule } from "./cards/cards.module";
   imports: [
     PassportModule,
     ConfigModule.forRoot({
-      validate,
     }), // Loads the .env file
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],

@@ -1,3 +1,5 @@
+/**
+
 import { plainToInstance } from "class-transformer";
 import {
   IsNumber,
@@ -54,3 +56,4 @@ export function validate(config: Record<string, unknown>) {
   }
   return validatedConfig;
 }
+*/
