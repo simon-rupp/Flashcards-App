@@ -5,8 +5,8 @@ services:
     image: postgres:latest
     container_name: flashcards-database
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: posts-db
+      POSTGRES_USER: flashcards_database_user
+      POSTGRES_PASSWORD: QbEWo9JeRx3qDkkcQZnLwvO7IHQdhbI4
+      POSTGRES_DB: flashcards_database
     ports:
       - "5432:5432"
