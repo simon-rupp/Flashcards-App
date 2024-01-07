@@ -29,6 +29,7 @@ import { CardsModule } from "./cards/cards.module";
         password: configService.get<string>("DB_PASSWORD"),
         database: configService.get<string>("DB_NAME"),
         entities: [__dirname + "/**/*.entity{.ts,.js}"],
+        url: configService.get<string>("DATABASE_URL"),
         synchronize: configService.get<string>("NODE_ENV") !== "production",
         ssl: configService.get<string>("NODE_ENV") === "production",
       }),
