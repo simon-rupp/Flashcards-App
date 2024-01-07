@@ -105,7 +105,7 @@ export const RegisterDialog = () => {
               }}
             />
           </div>
-          <div className="grid items-center grid-cols-4 gap-4">
+          {/* <div className="grid items-center grid-cols-4 gap-4">
             <Label htmlFor="avatarUrl" className="text-right">
               Avatar URL
             </Label>
@@ -117,7 +117,7 @@ export const RegisterDialog = () => {
                 setAvatarUrl(e.target.value);
               }}
             />
-          </div>
+          </div> */}
         </div>
         <DialogFooter>
           <DialogClose asChild>
