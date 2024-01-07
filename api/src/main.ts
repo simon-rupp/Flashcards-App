@@ -22,7 +22,7 @@ async function bootstrap() {
     }),
   );
 
-  app.useGlobalFilters(new HttpResponseFilter());
+  //app.useGlobalFilters(new HttpResponseFilter());
   app.useGlobalInterceptors(new HttpResponseInterceptor());
 
   await app.listen(process.env.PORT || 3000, '0.0.0.0');
