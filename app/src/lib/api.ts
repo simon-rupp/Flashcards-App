@@ -55,6 +55,8 @@ export const login = async (
 
   const responseJson = await response.json();
 
+  console.log(responseJson);
+
   if (!response.ok) {
     throw new Error(
       `Error: ${response.status} - ${
