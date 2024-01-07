@@ -30,7 +30,7 @@ import { CardsModule } from "./cards/cards.module";
         database: configService.get<string>("DB_NAME"),
         entities: [__dirname + "/**/*.entity{.ts,.js}"],
         url: configService.get<string>("DATABASE_URL"),
-        synchronize: configService.get<string>("NODE_ENV") !== "production",
+        synchronize: configService.get<string>("NODE_ENV") === "production",
         ssl: configService.get<string>("NODE_ENV") === "production"
           ? { rejectUnauthorized: false }
           : false,
