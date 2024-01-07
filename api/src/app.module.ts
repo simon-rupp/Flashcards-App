@@ -31,7 +31,9 @@ import { CardsModule } from "./cards/cards.module";
         entities: [__dirname + "/**/*.entity{.ts,.js}"],
         url: configService.get<string>("DATABASE_URL"),
         synchronize: configService.get<string>("NODE_ENV") !== "production",
-        ssl: configService.get<string>("NODE_ENV") === "production",
+        ssl: configService.get<string>("NODE_ENV") === "production"
+          ? { rejectUnauthorized: false }
+          : false,
       }),
       inject: [ConfigService],
     }),
