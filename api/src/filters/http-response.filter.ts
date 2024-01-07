@@ -28,7 +28,7 @@ export class HttpResponseFilter {
       }
     } else {
       errorResponse["message"] = "Internal Server Error";
-      if (process.env.NODE_ENV === "prouction") {
+      if (process.env.NODE_ENV === "production") {
         errorResponse["error"] = exception.toString();
       }
     }
