@@ -17,7 +17,9 @@ const Deck = ({ deck }: { deck: Deck }) => {
           <div className="flex justify-between mb-2">
             <div>
               <p className="font-bold">{title}</p>
-              <p className="text-sm">{numberOfCards} cards</p>
+              <p className="text-sm">
+                {numberOfCards === 1 ? `${numberOfCards} card` : `${numberOfCards} cards`}
+              </p>
             </div>
             <div className="absolute top-0 right-0 p-2">
               <DeckActions deckId={id} title={title} />
